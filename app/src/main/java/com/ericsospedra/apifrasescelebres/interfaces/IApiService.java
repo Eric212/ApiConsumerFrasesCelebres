@@ -11,39 +11,39 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface IApiService {
-    @GET("/autor/all")
+    @GET("autor/all")
     public Call<List<Author>> getAllAuthor();
 
-    @GET("/autor/all/{page}")
+    @GET("autor/all/{page}")
     public Call<List<Author>> getAuthorByPages(@Path("page") int page);
 
-    @GET("/autor/{id}")
+    @GET("autor/{id}")
     public Call<Author> getAuthorById(@Path("id") int id);
 
-    @GET("/categoria/all")
+    @GET("categoria/all")
     public Call<List<Category>> getAllCategories();
 
-    @GET("/categoria/all/{page}")
+    @GET("categoria/all/{page}")
     public Call<List<Category>> getCategoriesByPages(@Path("page") int page);
 
-    @GET("/categoria/{id}")
+    @GET("categoria/{id}")
     public Call<Category> getCategoryById(@Path("id") int id);
 
-    @GET("/frase/all")
+    @GET("frase/all")
     public Call<List<Sentence>> getAllSentences();
 
-    @GET("/frase/all/{page}")
+    @GET("frase/all/{page}")
     public Call<List<Sentence>> getAllSentencesByPage(@Path("page") int page);
 
-    @GET("/frase/{id}}")
+    @GET("frase/{id}}")
     public Call<Sentence> getSetenceById(@Path("id") int id);
 
-    @GET("/frase/categoria/{id}")
+    @GET("frase/categoria/{id}")
     public Call<List<Sentence>> getSentencesByCategory(@Path("id") int id);
 
-    @GET("/frase/author/{id}")
+    @GET("frase/author/{id}")
     public Call<List<Sentence>> getSentencesByAuthor(@Path("id") int id);
 
-    @GET("/frase/dia/{date}")
+    @GET("frase/dia/{date}")
     public Call<Sentence> getSentenceByDate(@Path("date") String date);
 }

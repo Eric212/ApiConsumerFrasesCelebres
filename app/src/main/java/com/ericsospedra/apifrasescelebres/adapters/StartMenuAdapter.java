@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ericsospedra.apifrasescelebres.R;
@@ -16,8 +17,8 @@ import com.ericsospedra.apifrasescelebres.models.StartMenuItem;
 import java.util.List;
 
 public class StartMenuAdapter extends RecyclerView.Adapter<StartMenuAdapter.StartMenuViewHolder> {
-    private List<StartMenuItem> startMenuItems;
-    private IOnClickListener listener;
+    private final List<StartMenuItem> startMenuItems;
+    private final IOnClickListener listener;
 
     public StartMenuAdapter(List<StartMenuItem> startMenuItems, IOnClickListener listener) {
         this.startMenuItems = startMenuItems;
@@ -38,7 +39,7 @@ public class StartMenuAdapter extends RecyclerView.Adapter<StartMenuAdapter.Star
 
     @Override
     public int getItemCount() {
-        return 0;
+        return startMenuItems.size();
     }
 
     public class StartMenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -53,12 +54,15 @@ public class StartMenuAdapter extends RecyclerView.Adapter<StartMenuAdapter.Star
 
         public void onBindStartMenu(StartMenuItem startMenuItem) {
             ivStartMenu.setImageResource(itemView.getContext().getResources().getIdentifier(startMenuItem.getImage(),"drawable",itemView.getContext().getPackageName()));
+            ivStartMenu.getLayoutParams().width = 256;
+            ivStartMenu.getLayoutParams().height = 256;
             tvStartMenu.setText(startMenuItem.getName());
         }
 
         @Override
         public void onClick(View v) {
-            TextView textView = (TextView) v;
+            ConstraintLayout layout = (ConstraintLayout) v;
+            TextView textView = layout.findViewById(R.id.tvStartMenu);
             listener.onClick(textView.getText().toString());
         }
     }

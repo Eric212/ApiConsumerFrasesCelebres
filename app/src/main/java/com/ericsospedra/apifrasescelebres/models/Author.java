@@ -5,9 +5,9 @@ public class Author {
     private String name;
     private int birthday;
     private String death;
-    private String[] profesions;
+    private String profesions;
 
-    public Author(int id, String name, int birthday, String death, String[] profesions) {
+    public Author(int id, String name, int birthday, String death, String profesions) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -31,8 +31,19 @@ public class Author {
         return death;
     }
 
-    public String[] getProfesions() {
+    public String getProfesions() {
         return profesions;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", death='" + death + '\'' +
+                ", profesions='" + profesions + '\'' +
+                '}';
     }
 }
 
